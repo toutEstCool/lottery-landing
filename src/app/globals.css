@@ -74,3 +74,18 @@ body {
   transform: translateY(-7px);
   box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
 }
+
+/* Feature section  */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

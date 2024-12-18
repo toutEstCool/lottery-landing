@@ -6,7 +6,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'cutesolution.com',
-        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
       }
     ]
   }

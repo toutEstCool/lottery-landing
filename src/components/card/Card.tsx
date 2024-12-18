@@ -1,37 +1,46 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export const Card = () => {
+interface Props {
+  icon?: IconProp
+  title?: string
+  description?: string
+  iconColor?: string
+  isHaveBoxShadow?: boolean
+}
+
+export const Card = (props: Props) => {
+  const { icon, iconColor, title = '', description = '', isHaveBoxShadow } = props
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-4 mt-[100px]">
       {/* Карточка */}
       <article
-        className="bg-white p-8 rounded-lg text-center border border-transparent transition-all duration-300 ease-in-out will-change-transform hover:shadow-2xl hover:-translate-y-3 focus-within:shadow-2xl focus-within:-translate-y-3"
+        className={`bg-white p-8 rounded-lg text-center border border-transparent transition-all duration-300 ease-in-out will-change-transform ${isHaveBoxShadow && 'hover:shadow-2xl'}  hover:-translate-y-3 focus-within:shadow-2xl focus-within:-translate-y-3`}
         role="region"
         aria-labelledby="card-title"
       >
         {/* Иконка */}
-        <div className="mb-4 flex justify-center">
+        {icon && (<div className="mb-4 flex justify-center">
           <FontAwesomeIcon
-            icon={faPalette}
-            className="text-green-500 w-12 h-12 transition-transform duration-300 ease-in-out will-change-transform"
+            icon={icon}
+            className={`text-[${iconColor}] w-12 h-12 transition-transform duration-300 ease-in-out will-change-transform`}
             aria-hidden="true"
           />
-        </div>
+        </div>)}
 
         {/* Заголовок */}
         <h3
           id="card-title"
           className="text-lg font-bold text-gray-800 mb-2"
         >
-          High Quality Design
+          {title}
         </h3>
 
         {/* Текст */}
         <p className="text-sm text-gray-600 leading-relaxed">
-          Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod.
+          {description}
         </p>
       </article>
     </div>

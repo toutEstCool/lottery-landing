@@ -35,7 +35,7 @@ export const Header = () => {
               className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black" : "text-white"
                 }`}
             >
-              Voltamic
+              Shumkar
             </span>
           </Link>
         </div>
@@ -68,28 +68,28 @@ export const Header = () => {
             className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
-            Home
+            Shumkar
           </Link>
           <Link
             href="#features"
             className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
-            Features
+            Shumkar
           </Link>
           <Link
             href="#shop"
             className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
-            Shop Product
+            Shumkar
           </Link>
           <Link
             href="#review"
             className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
-            Review
+            Shumkar
           </Link>
         </nav>
       </div>

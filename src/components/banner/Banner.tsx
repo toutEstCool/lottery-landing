@@ -18,23 +18,20 @@ export const Banner = () => {
             id="banner-heading"
             className="text-2xl sm:text-3xl lg:text-[28px] font-bold text-white leading-snug lg:leading-[36px]"
           >
-            Smart digital watch for <br className="hidden sm:block" /> your daily luxurious
-            life
+            Rick and Morty<br className="hidden sm:block" />
           </h1>
           <p className="mt-3 text-white text-sm sm:text-base lg:text-lg opacity-80 leading-relaxed lg:leading-7">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad
-            minim veniam.
+            Beth and Jerry head off on a romantic getaway. Rick and Summer throw a huge intergalactic house party, broh.
           </p>
           <div className="mt-4">
-            <ButtonWithHoverEffect text="Buy Products" />
+            <ButtonWithHoverEffect text="Shumkar Info" />
           </div>
         </div>
 
         {/* Правая сторона: изображение часов */}
         <div className="flex-1 flex justify-center lg:justify-end order-2 lg:order-2 mb-6 lg:mb-0">
           <Image
-            src="https://cutesolution.com/html/voltamic/assets/img/home-font.png"
+            src="https://i.ibb.co/gtWdPCr/2a88ef5c9ae0c9c5d4af689b0ec9ad1c-Photoroom.png"
             alt="Smart digital watch"
             width={450}
             height={500}
