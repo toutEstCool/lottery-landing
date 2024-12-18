@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Функция для проверки прокрутки страницы
   useEffect(() => {
@@ -34,35 +36,60 @@ export const Header = () => {
           </Link>
         </div>
 
+        {/* Иконка бургер-меню */}
+        <div className="lg:hidden z-50 relative">
+          {isMenuOpen ? (
+            <X
+              className={`w-8 h-8 cursor-pointer text-black`}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          ) : (
+            <Menu
+              className={`w-8 h-8 cursor-pointer ${isScrolled ? "text-black" : "text-white"
+                }`}
+              onClick={() => setIsMenuOpen(true)}
+            />
+          )}
+        </div>
+
         {/* Навигация */}
-        <nav className="space-x-6">
+        <nav
+          className={`lg:flex lg:space-x-6 lg:items-center ${isMenuOpen
+              ? "fixed top-0 left-0 h-full w-full bg-white z-40 flex flex-col space-y-6 pt-20 px-6"
+              : "hidden lg:flex"
+            }`}
+        >
           <Link
             href="/"
-            className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black hover:text-gray-500" : "text-white hover:text-gray-300"
+            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
               }`}
+            onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             href="#features"
-            className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black hover:text-gray-500" : "text-white hover:text-gray-300"
+            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
               }`}
+            onClick={() => setIsMenuOpen(false)}
           >
             Features
           </Link>
           <Link
             href="#shop"
-            className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black hover:text-gray-500" : "text-white hover:text-gray-300"
+            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
               }`}
+            onClick={() => setIsMenuOpen(false)}
           >
             Shop Product
           </Link>
           <Link
-            href="#contact"
-            className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black hover:text-gray-500" : "text-white hover:text-gray-300"
+            href="#review"
+            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
               }`}
+            onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            Review
           </Link>
         </nav>
       </div>
