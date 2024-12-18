@@ -11,12 +11,16 @@ export const Header = () => {
   // Функция для проверки прокрутки страницы
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      requestAnimationFrame(() => setIsScrolled(window.scrollY > 50));
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinkClasses = (scrolled: boolean) =>
+    `text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${scrolled ? "text-black" : "lg:text-white text-black"
+    }`;
 
   return (
     <header
@@ -26,7 +30,7 @@ export const Header = () => {
       <div className="container max-w-[1110px] mx-auto flex items-center justify-between py-4 px-6">
         {/* Логотип */}
         <div className="text-2xl font-bold">
-          <Link href="/">
+          <Link href="/" aria-label="Go to homepage">
             <span
               className={`transition-colors duration-700 ease-in-out ${isScrolled ? "text-black" : "text-white"
                 }`}
@@ -37,56 +41,52 @@ export const Header = () => {
         </div>
 
         {/* Иконка бургер-меню */}
-        <div className="lg:hidden z-50 relative">
+        <button
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          className="lg:hidden z-50 relative focus:outline-none"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
           {isMenuOpen ? (
-            <X
-              className={`w-8 h-8 cursor-pointer text-black`}
-              onClick={() => setIsMenuOpen(false)}
-            />
+            <X className="w-8 h-8 text-black" />
           ) : (
-            <Menu
-              className={`w-8 h-8 cursor-pointer ${isScrolled ? "text-black" : "text-white"
-                }`}
-              onClick={() => setIsMenuOpen(true)}
-            />
+            <Menu className={`w-8 h-8 ${isScrolled ? "text-black" : "text-white"}`} />
           )}
-        </div>
+        </button>
 
         {/* Навигация */}
         <nav
           className={`lg:flex lg:space-x-6 lg:items-center ${isMenuOpen
-              ? "fixed top-0 left-0 h-full w-full bg-white z-40 flex flex-col space-y-6 pt-20 px-6"
-              : "hidden lg:flex"
+            ? "fixed top-0 left-0 h-full w-full bg-white z-40 flex flex-col space-y-6 pt-20 px-6"
+            : "hidden lg:flex"
             }`}
+          role="navigation"
+          aria-label="Main navigation"
         >
           <Link
             href="/"
-            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
-              }`}
+            className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             href="#features"
-            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
-              }`}
+            className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
             Features
           </Link>
           <Link
             href="#shop"
-            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
-              }`}
+            className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
             Shop Product
           </Link>
           <Link
             href="#review"
-            className={`text-lg transition-colors duration-300 ease-in-out hover:text-purple-500 ${isScrolled ? "text-black" : "lg:text-white text-black"
-              }`}
+            className={navLinkClasses(isScrolled)}
             onClick={() => setIsMenuOpen(false)}
           >
             Review
