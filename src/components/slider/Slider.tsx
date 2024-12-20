@@ -8,11 +8,6 @@ interface SliderProps {
 }
 
 export const Slider = ({ slides, autoScrollInterval = 3000 }: SliderProps) => {
-  // Если нет слайдов, сразу возвращаем сообщение
-  if (slides.length === 0) {
-    return <div className="text-center py-8">Нет доступных изображений</div>;
-  }
-
   const [currentIndex, setCurrentIndex] = useState(1); // Начинаем с виртуального слайда
   const [isAnimating, setIsAnimating] = useState(false);
   const slideRef = useRef<HTMLDivElement>(null);
@@ -75,58 +70,67 @@ export const Slider = ({ slides, autoScrollInterval = 3000 }: SliderProps) => {
 
   return (
     <div className="relative overflow-hidden w-full h-[60vh] bg-gray-200 rounded-lg">
-      {/* Контейнер слайдов */}
-      <div
-        className="flex"
-        ref={slideRef}
-        onTransitionEnd={handleTransitionEnd}
-        style={{ width: `${100 * virtualSlides.length}%` }}
-      >
-        {virtualSlides.map((slide, index) => (
+      {/* Если нет слайдов, отображаем сообщение */}
+      {slides.length === 0 ? (
+        <div className="flex items-center justify-center h-full text-gray-500">
+          Нет доступных изображений
+        </div>
+      ) : (
+        <>
+          {/* Контейнер слайдов */}
           <div
-            key={index}
-            className="w-full h-[60vh] flex-shrink-0 flex items-center justify-center bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${slide})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          ></div>
-        ))}
-      </div>
+            className="flex"
+            ref={slideRef}
+            onTransitionEnd={handleTransitionEnd}
+            style={{ width: `${100 * virtualSlides.length}%` }}
+          >
+            {virtualSlides.map((slide, index) => (
+              <div
+                key={index}
+                className="w-full h-[60vh] flex-shrink-0 flex items-center justify-center bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${slide})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+            ))}
+          </div>
 
-      {/* Кнопки навигации */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none hover:bg-opacity-75"
-      >
-        ◀
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none hover:bg-opacity-75"
-      >
-        ▶
-      </button>
+          {/* Кнопки навигации */}
+          <button
+            onClick={prevSlide}
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none hover:bg-opacity-75"
+          >
+            ◀
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none hover:bg-opacity-75"
+          >
+            ▶
+          </button>
 
-      {/* Индикаторы */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
-          <span
-            key={index}
-            onClick={() => {
-              if (!isAnimating) {
-                setCurrentIndex(index + 1);
-                if (autoScrollRef.current) clearInterval(autoScrollRef.current);
-              }
-            }}
-            className={`block w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index + 1
-                ? "bg-white bg-opacity-90 scale-125"
-                : "bg-white bg-opacity-50"
-              }`}
-          />
-        ))}
-      </div>
+          {/* Индикаторы */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {slides.map((_, index) => (
+              <span
+                key={index}
+                onClick={() => {
+                  if (!isAnimating) {
+                    setCurrentIndex(index + 1);
+                    if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+                  }
+                }}
+                className={`block w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index + 1
+                    ? "bg-white bg-opacity-90 scale-125"
+                    : "bg-white bg-opacity-50"
+                  }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

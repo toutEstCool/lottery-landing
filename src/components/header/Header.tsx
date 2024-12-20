@@ -9,7 +9,8 @@ import { LanguageSelector } from "../languageSelector/LanguageSelector";
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [_, setIsMobile] = useState(false);
+  // @typescript-eslint/no-unused-vars
+  // const [isMobile, setIsMobile] = useState(false);
 
   // Состояние для выбранного языка
   const [language, setLanguage] = useState<'en' | 'ru' | 'es'>('en');
@@ -29,14 +30,14 @@ export const Header = () => {
   }, []);
 
   // Проверка ширины экрана
-  useEffect(() => {
-    const checkIsMobile = () => setIsMobile(window.innerWidth <= 768);
+  // useEffect(() => {
+  //   const checkIsMobile = () => setIsMobile(window.innerWidth <= 768);
 
-    checkIsMobile(); // Первоначальная проверка
-    window.addEventListener("resize", checkIsMobile);
+  //   checkIsMobile(); // Первоначальная проверка
+  //   window.addEventListener("resize", checkIsMobile);
 
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
+  //   return () => window.removeEventListener("resize", checkIsMobile);
+  // }, []);
 
   return (
     <header
