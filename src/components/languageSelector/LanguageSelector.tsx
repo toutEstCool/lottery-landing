@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 
-type Language = 'en' | 'ru' | 'es';
+type Language = 'en' | 'ru' | 'kg';
 
 interface LanguageSelectorProps {
   currentLanguage: Language;
@@ -19,7 +19,7 @@ export const LanguageSelector = ({
   const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'ru', label: 'Русский' },
-    { code: 'es', label: 'Español' },
+    { code: 'kg', label: 'Киргизский' },
   ];
 
   const toggleDropdown = useCallback(() => setIsOpen((prev) => !prev), []);

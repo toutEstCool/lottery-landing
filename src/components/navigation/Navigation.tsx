@@ -66,7 +66,7 @@ export const Navigation = (props: INavigationProps) => {
           aria-haspopup="true"
           aria-expanded={isDropdownOpen}
         >
-          Product Services
+          Products and Services
         </button>
         <div
           className={`absolute flex justify-center items-center w-full top-full left-0 mt-2 md:w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-[150] transform transition-all duration-300 ease-in-out ${isDropdownOpen
@@ -85,7 +85,7 @@ export const Navigation = (props: INavigationProps) => {
                   setIsMenuOpen(false);
                 }}
               >
-                Оператор Лотерей
+                Lottery Operator
               </Link>
             </li>
             <li>
@@ -97,7 +97,7 @@ export const Navigation = (props: INavigationProps) => {
                   setIsMenuOpen(false);
                 }}
               >
-                Защищенные Документы
+                Security Documents
               </Link>
             </li>
             <li>
@@ -109,7 +109,7 @@ export const Navigation = (props: INavigationProps) => {
                   setIsMenuOpen(false);
                 }}
               >
-                Персонализация
+                Personalisation
               </Link>
             </li>
             <li>
@@ -121,7 +121,7 @@ export const Navigation = (props: INavigationProps) => {
                   setIsMenuOpen(false);
                 }}
               >
-                RFID Контроль
+                RFID Control
               </Link>
             </li>
             <li>
@@ -133,7 +133,7 @@ export const Navigation = (props: INavigationProps) => {
                   setIsMenuOpen(false);
                 }}
               >
-                Умный Город
+                Smart City
               </Link>
             </li>
           </ul>
@@ -146,16 +146,16 @@ export const Navigation = (props: INavigationProps) => {
         className={navLinkClasses(isScrolled)}
         onClick={() => setIsMenuOpen(false)}
       >
-        About us
+        About Us
       </Link>
 
       {/* Contacts */}
       <Link
-        href="#shop"
+        href="/contact"
         className={navLinkClasses(isScrolled)}
         onClick={() => setIsMenuOpen(false)}
       >
-        Contacts
+        Contact Us
       </Link>
     </nav>
   );

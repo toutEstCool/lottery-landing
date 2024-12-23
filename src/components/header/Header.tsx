@@ -13,9 +13,9 @@ export const Header = () => {
   // const [isMobile, setIsMobile] = useState(false);
 
   // Состояние для выбранного языка
-  const [language, setLanguage] = useState<'en' | 'ru' | 'es'>('en');
+  const [language, setLanguage] = useState<'en' | 'ru' | 'kg'>('en');
 
-  const handleLanguageChange = (newLanguage: 'en' | 'ru' | 'es') => {
+  const handleLanguageChange = (newLanguage: 'en' | 'ru' | 'kg') => {
     setLanguage(newLanguage);
   };
 
