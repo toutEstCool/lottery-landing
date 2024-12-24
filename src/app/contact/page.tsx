@@ -1,20 +1,10 @@
-import { BlogCard } from "@/components/blogCard/BlogCard";
-import { Card } from "@/components/card/Card";
 import { ContactForm } from "@/components/contactForm/ContactForm";
-import { FeaturesSection } from "@/components/featuresSection/FeaturesSection";
 import { Footer } from "@/components/footer/Footer";
 import { Header } from "@/components/header/Header";
-import { Slider } from "@/components/slider/Slider";
-import { VideoSection } from "@/components/videoSection/VideoSection";
-import { firstData, secondData } from "@/moks/moks";
+
 
 
 export default function Contact() {
-  const slides = [
-    "https://i.pinimg.com/736x/f9/8c/cd/f98ccdc458176a2ef1a5e7a6162e6fbe.jpg",
-    "https://via.placeholder.com/800x400.png?text=Slide+2",
-    "https://via.placeholder.com/800x400.png?text=Slide+3",
-  ];
   return (
     <>
       <div>
